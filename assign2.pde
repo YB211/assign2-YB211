@@ -126,10 +126,20 @@ void draw(){
               gameState = GAME_OVER;          
             }
          }       
-         break;
+        break;
         
     case GAME_OVER:
+      image(gameOver,0,0);
+      image(restartNormal,248,360);
       
+      if(mouseX > BUTTON_LEFT && mouseX < BUTTON_RIGHT 
+      && mouseY > BUTTON_TOP && mouseY < BUTTON_BOTTOM){
+        if(mousePressed){
+          gameState = GAME_RUN;
+        }else{
+          image(restartHovered,248,360);
+        }
+      }
       break;
         
       } 
