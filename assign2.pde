@@ -15,8 +15,8 @@ final int BUTTON_RIGHT = 392;
 float soldierX=0;
 float soldierY;
 float soldierSpeed = 2;
-float soldierWidth, cabbageWidth = 80;
-float soldierHeight, cabbageHeight = 80;
+float soldierWidth = 80, cabbageWidth = 80;
+float soldierHeight = 80, cabbageHeight = 80;
 
 float cabbageX;
 float cabbageY;
@@ -48,6 +48,7 @@ void setup(){
   restartNormal = loadImage("img/restartNormal.png");
   restartHovered = loadImage("img/restartHovered.png");
   title = loadImage("img/title.jpg");
+  gameOver = loadImage("img/gameover.jpg"); 
  
   cabbageX=floor(random(8));
   cabbageY=floor(random(2,6));
@@ -87,16 +88,18 @@ void draw(){
       break;
       
     case GAME_RUN:
-    
+        
         if(lifeNumber == 1){
           image(life,life1X, life1Y);
-        }else if(lifeNumber ==2){
+        }else if(lifeNumber == 2){
           image(life,life1X, life1Y);
           image(life,life2X, life2Y);
-        }else if(lifeNumber ==3){
+        }else if(lifeNumber == 3){
           image(life,life1X, life1Y);
           image(life,life2X, life2Y);
           image(life,life3X, life3Y);
+        }else if(lifeNumber ==0){
+           gameState = GAME_OVER;      
         } 
         
         soldierX +=soldierSpeed;
@@ -151,6 +154,7 @@ void draw(){
       if(mouseX > BUTTON_LEFT && mouseX < BUTTON_RIGHT 
       && mouseY > BUTTON_TOP && mouseY < BUTTON_BOTTOM){
         if(mousePressed){
+          lifeNumber =2;
           gameState = GAME_RUN;
         }else{
           image(restartHovered,248,360);
