@@ -155,6 +155,11 @@ void draw(){
       && mouseY > BUTTON_TOP && mouseY < BUTTON_BOTTOM){
         if(mousePressed){
           lifeNumber =2;
+          soldierX = 0;
+          soldierY = (int)random(2,6); 
+          cabbageX = (int)random(0,8);
+          cabbageY = (int)random(2,6);
+          
           gameState = GAME_RUN;
         }else{
           image(restartHovered,248,360);
@@ -180,4 +185,3 @@ void keyPressed(){
       }
     }
 }
-
